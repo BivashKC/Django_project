@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% block title%}Contact | SIC{%endblock%}
+{% block body%}
+
+<div class="container py-4 my-4">
+
+    <div class="row col-lg-9 mx-auto border rounded-3 ">
+        <div class="col p-0 m-0">
+            <img src="{% static 'images/contact.jpg' %}" alt="image" class="img-fluid rounded-start-3">
+        </div>
+
+        <div class="col-lg-7 px-4">
+            <h3 class="py-4">Contact Us</h3>
+            <form method="post">
+                {% csrf_token %}
+                <table class="table mb-4">
+                    {% bootstrap_form form  layout="floating" %}
+                </table>
+                <div class="d-flex justify-content-between mb-3">
+                  <div>
+                    <a href="tel:+01-42343433" class="btn btn-outline-primary col-12" >Call Us Now</a>
+                  </div>
+                    <button class="btn  btn-primary " type="submit">Send</button>
+
+
+                </div>
+
+              
+            
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

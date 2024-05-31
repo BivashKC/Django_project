@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+
+
+
+{% block title %} Note Detail | SIC{% endblock %}
+{% block body %}
+
+      <div class="container py-5">
+            <div class="border p-4 rounded-3">
+                <h3 class="mb-3 text-center">{{note.title}}</h3> <hr>
+                <p>Created: {{note.created}}</p>
+
+                <p>{{note.desc}}</p>
+
+                {% if note.pdf %}
+                <a  class="btn btn-primary " href="{{note.pdf.url}}" download >PDFs</a>
+                {% endif%}
+
+
+            </div>
+        </div>
+        
+
+      </div>
+
+{% endblock %}

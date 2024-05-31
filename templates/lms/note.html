@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+
+
+
+{% block title %} Notes | SIC{% endblock %}
+{% block body %}
+
+      <div class="container py-5">
+        <div class="row ">
+            <div class="col-8">
+                <h3 class="mb-4">Your Notes</h3> <hr>
+                {% for i in notes%}
+                <div class="p-3 border shadow-sm rounded-3 mb-2 d-flex justify-content-between">
+                    <div>
+                        <h6 title="{{i.title}}">{{i.title|truncatechars:30}}</h6>
+                    </div>
+                    <div class="btn-group">
+                        <a class="btn btn-primary btn-sm me-2" href="/lms/note-detail/{{i.id}}">view</a>
+                        <a class="btn btn-warning btn-sm me-2" href="/lms/note-update/{{i.id}}">update</a>
+                        <a class="btn btn-danger btn-sm"  href="/lms/note-delete/{{i.id}}"
+
+                        onclick="return confirm('Confirm Delete??')"
+                        
+                        >delete</a>
+                    </div>
+
+                </div>
+                {% empty %}
+                <p class="text-center text-muted">No notes found.</p>
+                {% endfor %}
+
+
+
+
+                
+
+            </div>
+            <div class="col border p-3 rounded-3">
+                <h3 class="mb-3 text-center">Add a note</h3> <hr>
+                <form  method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <table class="table mb-4">
+                        {% bootstrap_form form  layout="floating" %}
+                    </table>
+                    <div class="d-flex justify-content-center mb-3">
+                     
+                      
+                        <button class="btn  btn-primary col-12 " type="submit">Save</button>
+    
+    
+                    </div>
+    
+                  
+                
+                </form>
+
+
+            </div>
+        </div>
+        
+
+      </div>
+
+{% endblock %}

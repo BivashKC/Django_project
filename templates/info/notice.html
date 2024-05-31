@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Notices | SIC{% endblock %}
+
+{% block body %}
+    
+
+      <div class="container py-3">
+        <h3 class="text-center py-4">Notices Page </h3>
+
+        <div class="row">
+          {% for notice in notices%}
+
+          <div class="shadow-sm rounded-3 border  me-1 col-4 px-4 py-3" >
+            <h5>{{notice.subject}}</h5>
+            <p><small>{{notice.created}}</small></p>
+            <p>{{notice.desc}}</p>
+            {% if notice.attachment %}
+            <a href="{{notice.attachment.url}}" download class="btn btn-sm btn-primary">attachment</a>
+            {%endif%}
+          </div>
+
+        
+          
+          {% empty %}
+          <p>No notices found.</p>
+          {% endfor%}
+        </div>
+        
+        
+
+
+      </div>
+
+      {% endblock %}
